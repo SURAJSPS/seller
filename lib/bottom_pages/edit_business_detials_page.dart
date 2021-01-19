@@ -16,12 +16,7 @@ class EditBusinessDetails extends StatelessWidget {
           leading: IconButton(
             icon: Icon(Icons.arrow_back),
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => BottomAccountPage(),
-                ),
-              );
+              Navigator.of(context).pop();
             },
           ),
         ),
