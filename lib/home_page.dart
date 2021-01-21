@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'bottom_pages/account_page.dart';
-import 'bottom_pages/home_page.dart';
-import 'bottom_pages/marketing_page.dart';
-import 'bottom_pages/order_page.dart';
-import 'bottom_pages/products_page.dart';
+import 'tabs/account/account_page.dart';
+import 'tabs/home/home_page.dart';
+import 'tabs/marketing/marketing_page.dart';
+import 'tabs/basket/order_page.dart';
+import 'tabs/products/products_page.dart';
 
 class Homepage extends StatefulWidget {
   @override
