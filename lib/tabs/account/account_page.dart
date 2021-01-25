@@ -6,6 +6,7 @@ import 'package:new1/tabs/account/privacy_policy.dart';
 import 'package:new1/tabs/marketing/share_dukaan_app.dart';
 
 import 'edit_business_detials_page.dart';
+import 'how_to_use_dukan_app.dart';
 
 class BottomAccountPage extends StatefulWidget {
   @override
@@ -227,7 +228,9 @@ class _BottomAccountPageState extends State<BottomAccountPage> {
                   'Remove Dukaan Branding',
                   style: TextStyle(fontSize: 14),
                 ),
-                onTap: () {},
+                onTap: () {
+                  _showMyDialogRemove_Dukaan_Branding();
+                },
                 leading: Icon(Icons.shopping_bag_outlined),
               ),
             ),
@@ -241,7 +244,14 @@ class _BottomAccountPageState extends State<BottomAccountPage> {
                   'How to use Dukan App',
                   style: TextStyle(fontSize: 14),
                 ),
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => HowToUseDukaanApp(),
+                    ),
+                  );
+                },
                 leading: Icon(Icons.video_collection_outlined),
               ),
             ),
@@ -561,6 +571,67 @@ class _BottomAccountPageState extends State<BottomAccountPage> {
                       Navigator.of(context).pop();
                     },
                   ),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  Future<void> _showMyDialogRemove_Dukaan_Branding() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: AlertDialog(
+            title: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  'Refer 5 friends to remove the Dukaan Branding for FREE!',
+                  style: TextStyle(fontSize: 16,),
+                ),
+              ],
+            ),
+            content: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * .93,
+                    height: 40,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5),
+                        color: Colors.blueGrey,
+                      ),
+                      height: 20,
+                      width: MediaQuery.of(context).size.width * .46,
+                      child: Row(
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "Store made with ",
+                                style: TextStyle(color: Colors.white,fontWeight: FontWeight.w300),
+                              ),
+                            ],
+                          ),
+                          Icon(Icons.shopping_bag_outlined,color: Colors.white,),
+                          Text('dukaan',style: TextStyle(color: Colors.white),),
+                        ],
+                      ),
+                    ),
+                  ),
+
                 ],
               ),
             ),
