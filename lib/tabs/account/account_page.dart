@@ -302,7 +302,8 @@ class _BottomAccountPageState extends State<BottomAccountPage> {
                   'Sign Out',
                   style: TextStyle(fontSize: 14),
                 ),
-                onTap: () {
+                onTap: ()
+                {
                   showModalBottomSheet<void>(
                     context: context,
                     builder: (BuildContext context) {
@@ -621,7 +622,7 @@ class _BottomAccountPageState extends State<BottomAccountPage> {
                             children: [
                               Text(
                                 "Store made with ",
-                                style: TextStyle(color: Colors.white,fontWeight: FontWeight.w300),
+                                style: TextStyle(color: Colors.white,fontWeight: FontWeight.w300,fontSize: 10),
                               ),
                             ],
                           ),
