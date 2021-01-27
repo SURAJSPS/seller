@@ -2,9 +2,13 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:new1/tabs/account/privacy_policy.dart';
+import 'package:new1/tabs/home/util/home_util.dart';
 import 'package:new1/tabs/marketing/share_dukaan_app.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:shimmer/shimmer.dart';
 
 import 'edit_business_detials_page.dart';
 import 'how_to_use_dukan_app.dart';
@@ -16,6 +20,8 @@ class BottomAccountPage extends StatefulWidget {
 
 class _BottomAccountPageState extends State<BottomAccountPage> {
   bool isActive = true;
+  bool loading = false;
+  int progressValue = 1;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -589,13 +595,134 @@ class _BottomAccountPageState extends State<BottomAccountPage> {
       barrierDismissible: false, // user must tap button!
       builder: (BuildContext context) {
         return Dialog(
-          insetPadding: EdgeInsets.symmetric(horizontal: 10,vertical: 100),
+          insetPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 120),
           child: Container(
-          width: MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 22,
+                ),
+                Text(
+                  'Refer 5 friends to remove the Dukaan Brending for FREE!',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 20),
+                ),
+                SizedBox(
+                  height: 8,
+                ),
+                Container(
+                  height: 40,
+                  width: MediaQuery.of(context).size.width * .85,
+                  decoration: BoxDecoration(
+                    color: Colors.indigo.withOpacity(.9),
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                  child: Row(
+                    children: [
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text(
+                        'Store made with',
+                        style: TextStyle(fontSize: 12, color: Colors.white),
+                      ),
+                      SizedBox(
+                        width: 2,
+                      ),
+                      Icon(
+                        Icons.shopping_bag_outlined,
+                        color: Colors.white,
+                      ),
+                      Text(
+                        'dukaan',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      SizedBox(
+                        width: 25,
+                      ),
+                      Text(
+                        'DOWNLOAD APP',
+                        style: TextStyle(
+                            color: Colors.white,
+                            decoration: TextDecoration.underline),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                CircularPercentIndicator(
+                  radius: 120.0,
+                  lineWidth: 5.0,
+                  percent: 1.0,
+                  center: new Text(
+                    "0/5",
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.blue,
+                        fontSize: 20),
+                  ),
+                  progressColor: Colors.grey,
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Text('YOUR STATUS'),
+                SizedBox(
+                  height: 45,
+                ),
+                CupertinoButton(
+                  child: Stack(
+                    children: [
+                      SizedBox(
+                        height: 50,
+                        width: MediaQuery.of(context).size.width * 0.7,
+                        child: CupertinoButton(
+                          child: Text(
+                            'Refer a friend',
+                            style: TextStyle(color: Colors.black),
+                          ),
+                          color: Colors.deepOrange,
+                          onPressed: () {},
+                        ),
+                      ),
+                      SizedBox(
+                        height: 50,
+                        width: MediaQuery.of(context).size.width * 0.7,
+                        child: Shimmer.fromColors(
+                            child: Container(
+                              height: 50,
+                              width: MediaQuery.of(context).size.width * 0.7,
+                              color: Colors.white24,
+                            ),
+                            baseColor: Colors.transparent,
+                            highlightColor: Colors.white),
+                      )
+                    ],
+                  ),
+                  onPressed: () {},
+                  padding: EdgeInsets.all(0),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 30),
+                  child: Text(
+                    'Note: Your friend should at list add 1 product after creating a store ',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 14),
+                  ),
+                ),
+              ],
+            ),
+            width: MediaQuery.of(context).size.width,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+            ),
           ),
-        ),);
+        );
       },
     );
   }
