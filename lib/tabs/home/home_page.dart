@@ -1,8 +1,12 @@
+import 'dart:ui';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:new1/bottom_pages/widget/drop.dart';
 import 'package:new1/bottom_pages/widget/overview_card_home_page.dart';
+import 'package:new1/tabs/home/util/home_util.dart';
+import 'package:new1/tabs/home/view/buttom_menu.dart';
 
 class BottomHomePage extends StatefulWidget {
   @override
@@ -12,6 +16,7 @@ class BottomHomePage extends StatefulWidget {
 class _BottomHomePageState extends State<BottomHomePage> {
   bool isActive = true;
   int _hasBeenPressed1 = 0;
+
 
   @override
   Widget build(BuildContext context) {
@@ -52,50 +57,43 @@ class _BottomHomePageState extends State<BottomHomePage> {
                     ),
                   );
                   Scaffold.of(context).showSnackBar(snackBar);
-                } else
-                  {
-                    showModalBottomSheet<void>(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return Column(crossAxisAlignment: CrossAxisAlignment.start,
+                } else {
+                  showModalBottomSheet<void>(
+                    backgroundColor: Colors.transparent,
+                    context: context,
+                    builder: (BuildContext context) {
+                      return Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color: Colors.white),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            Container(width:MediaQuery.of(context).size.width,color:Colors.black,
-                              child: Row(mainAxisAlignment: MainAxisAlignment.start,
+
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 10, vertical: 10),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
                                     'Go online after',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 18),
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
                                   ),
-                                  SizedBox(
-                                    width: 100,
-                                  ),
-                                  IconButton(
-                                    icon: Icon(Icons.clear),
-                                    onPressed: () {
+                                  GestureDetector(
+                                    child: Icon(Icons.clear),
+                                    onTap: () {
                                       Navigator.of(context).pop();
                                     },
-                                  ),
-                                  SizedBox(
-                                    height: 40,
                                   )
                                 ],
                               ),
                             ),
-                            Text('Are you want to sign out?'),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: CupertinoButton(
-                                color: Colors.red,
-                                child: Text('Sign Out'),
-                                onPressed: () => Navigator.pop(context),
-                              ),
-                            )
+                            BottomRadioMenu()
                           ],
-                        );
-                      },
-                    );
+                        ),
+                      );
+                    },
+                  );
                 }
               },
               value: isActive,
@@ -207,9 +205,7 @@ class _BottomHomePageState extends State<BottomHomePage> {
                                 style: TextStyle(
                                     fontSize: 14, color: Colors.white),
                               ),
-                              onPressed: () {
-
-                              },
+                              onPressed: () {},
                               color: Colors.cyan[700],
                             ),
                           ),
@@ -225,10 +221,7 @@ class _BottomHomePageState extends State<BottomHomePage> {
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text('Overview'),
-                      Drop()
-                    ],
+                    children: [Text('Overview'), Drop()],
                   ),
                 ),
                 SizedBox(

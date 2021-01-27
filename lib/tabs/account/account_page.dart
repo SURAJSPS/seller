@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:new1/tabs/account/privacy_policy.dart';
 import 'package:new1/tabs/marketing/share_dukaan_app.dart';
 
@@ -302,8 +303,7 @@ class _BottomAccountPageState extends State<BottomAccountPage> {
                   'Sign Out',
                   style: TextStyle(fontSize: 14),
                 ),
-                onTap: ()
-                {
+                onTap: () {
                   showModalBottomSheet<void>(
                     context: context,
                     builder: (BuildContext context) {
@@ -433,7 +433,7 @@ class _BottomAccountPageState extends State<BottomAccountPage> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsets.all(8.0),
+                                      padding: const EdgeInsets.all(6),
                                       child: Text('Auto Data Backup'),
                                     ),
                                   ],
@@ -584,60 +584,18 @@ class _BottomAccountPageState extends State<BottomAccountPage> {
   Future<void> _showMyDialogRemove_Dukaan_Branding() async {
     return showDialog<void>(
       context: context,
+      useSafeArea: true,
+
       barrierDismissible: false, // user must tap button!
       builder: (BuildContext context) {
-        return Container(
+        return Dialog(
+          insetPadding: EdgeInsets.symmetric(horizontal: 10,vertical: 100),
+          child: Container(
+          width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
           ),
-          child: AlertDialog(
-            title: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(
-                  'Refer 5 friends to remove the Dukaan Branding for FREE!',
-                  style: TextStyle(fontSize: 16,),
-                ),
-              ],
-            ),
-            content: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * .93,
-                    height: 40,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        color: Colors.blueGrey,
-                      ),
-                      height: 20,
-                      width: MediaQuery.of(context).size.width * .46,
-                      child: Row(
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                "Store made with ",
-                                style: TextStyle(color: Colors.white,fontWeight: FontWeight.w300,fontSize: 10),
-                              ),
-                            ],
-                          ),
-                          Icon(Icons.shopping_bag_outlined,color: Colors.white,),
-                          Text('dukaan',style: TextStyle(color: Colors.white),),
-                        ],
-                      ),
-                    ),
-                  ),
-
-                ],
-              ),
-            ),
-          ),
-        );
+        ),);
       },
     );
   }
