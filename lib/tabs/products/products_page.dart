@@ -7,7 +7,7 @@ class BottomProductsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 2,
-      child: Scaffold(
+      child: Scaffold(backgroundColor: Colors.grey[200],
         appBar: AppBar(
           centerTitle: true,
           actions: [
