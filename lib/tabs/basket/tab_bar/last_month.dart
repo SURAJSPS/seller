@@ -1,135 +1,43 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:shimmer/shimmer.dart';
+import 'package:new1/all_widget/shimmer_whit_timer.dart';
 
-class LastMonth extends StatelessWidget {
+import 'shimmer.dart';
+import 'today.dart';
+
+class LastMonth extends StatefulWidget {
+  @override
+  _LastMonthState createState() => _LastMonthState();
+}
+
+class _LastMonthState extends State<LastMonth> {
+  bool isActive = true;
+  _getResults() async {
+    await Future.delayed(Duration(seconds: 3));
+    setState(() {
+      isActive = false;
+    });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _getResults();
+  }
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-      child: Column(
-        children: [
-          Card(
-            child: Container(
-              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      Shimmer.fromColors(
-                        child: Container(
-                          width: 80,
-                          height: 80,
-                          decoration: BoxDecoration(
-                            color: Colors.grey[100],
-                            borderRadius: BorderRadius.circular(0),
-                          ),
-                        ),
-                        baseColor: Colors.grey[100],
-                        highlightColor: Colors.grey[200],
-                      ),
-                      SizedBox(
-                        width: 15,
-                      ),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Shimmer.fromColors(
-                              child: Container(
-                                height: 13,
-                                width: 280,
-                                decoration: BoxDecoration(
-                                  color: Colors.grey[100],
-                                  borderRadius: BorderRadius.circular(5),
-                                ),
-                              ),
-                              baseColor: Colors.grey[100],
-                              highlightColor: Colors.grey[200],
-                            ),
-                            SizedBox(
-                              height: 3,
-                            ),
-                            Shimmer.fromColors(
-                              child: Container(
-                                height: 12,
-                                width: 40,
-                                decoration: BoxDecoration(
-                                  color: Colors.grey[100],
-                                  borderRadius: BorderRadius.circular(5),
-                                ),
-                              ),
-                              baseColor: Colors.grey[100],
-                              highlightColor: Colors.grey[200],
-                            ),
-                            SizedBox(
-                              height: 5,
-                            ),
-                            Shimmer.fromColors(
-                              child: Container(
-                                height: 18,
-                                width: 24,
-                                decoration: BoxDecoration(
-                                  color: Colors.grey[100],
-                                  borderRadius: BorderRadius.circular(5),
-                                ),
-                              ),
-                              baseColor: Colors.grey[100],
-                              highlightColor: Colors.grey[200],
-                            ),
-                            SizedBox(
-                              height: 5,
-                            ),
-                            Shimmer.fromColors(
-                              child: Container(
-                                height: 15,
-                                width: 90,
-                                decoration: BoxDecoration(
-                                  color: Colors.grey[100],
-                                  borderRadius: BorderRadius.circular(5),
-                                ),
-                              ),
-                              baseColor: Colors.grey[100],
-                              highlightColor: Colors.grey[200],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                  Divider(
-                    height: 15,
-                    color: Colors.grey.withOpacity(.5),
-                    thickness: 1,
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Shimmer.fromColors(
-                        child: Container(
-                          height: 15,
-                          width: 150,
-                          decoration: BoxDecoration(
-                            color: Colors.grey[100],
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                        ),
-                        baseColor: Colors.grey[100],
-                        highlightColor: Colors.grey[200],
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ],
+    return isActive ? ListView(
+      children: [
+        ShimmerOnly(),
+        ShimmerOnly(),
+        ShimmerOnly(),
+        ShimmerOnly(),
+        ShimmerOnly(),
+      ],
+    ):Container(
+      child: Image.network(
+        'https://i.pinimg.com/originals/a7/37/45/a7374590c10d5ec0b891913d303112e9.jpg',
+        fit: BoxFit.cover,
       ),
     );
   }

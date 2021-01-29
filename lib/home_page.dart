@@ -3,7 +3,7 @@ import 'tabs/account/account_page.dart';
 import 'tabs/home/home_page.dart';
 import 'tabs/marketing/marketing_page.dart';
 import 'tabs/basket/order_page.dart';
-import 'tabs/products/products_page.dart';
+import 'tabs/products/catalogue_page.dart';
 
 class Homepage extends StatefulWidget {
   @override

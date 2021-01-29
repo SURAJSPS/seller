@@ -1,6 +1,7 @@
 import 'package:bubble_tab_indicator/bubble_tab_indicator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:new1/bottom_pages/widget/drop.dart';
 
 import 'tab_bar/all_time.dart';
 import 'tab_bar/last_month.dart';
@@ -14,91 +15,102 @@ class BottomOrderPage extends StatefulWidget {
   _BottomOrderPageState createState() => _BottomOrderPageState();
 }
 
-class _BottomOrderPageState extends State<BottomOrderPage> with TickerProviderStateMixin {
+class _BottomOrderPageState extends State<BottomOrderPage>
+    with TickerProviderStateMixin {
   int _hasBeenPressed1 = 0;
-   TabController tabController;
+  TabController tabController;
+  List<String> ll = ["All", "Pending","Accepted","Rejected","Shipped","Cancelled","Delivered","Failed"];
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    tabController=new TabController(length: 6, vsync: this);
+    tabController = new TabController(length: 6, vsync: this);
   }
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        backgroundColor: Colors.grey[200],
-        appBar: AppBar(
-          actions: [Icon(Icons.search)],
-          title: Text('All Orders'),
-          centerTitle: true,
-        ),
-        body: Column(
-          children: [
-            Container(
-              height: 50,
-              child: TabBar(controller: tabController,
-                indicatorWeight: 0,
-                indicator: new BubbleTabIndicator(
-                  indicatorHeight: 25.0,
-                  indicatorColor: Colors.blueAccent,
-                  tabBarIndicatorSize: TabBarIndicatorSize.tab,
+    return Scaffold(
+      backgroundColor: Colors.grey[200],
+      appBar: AppBar(
+        actions: [
+          PopupMenuButton(
+            onSelected: (value) {},
+            padding: EdgeInsets.all(10),
+            itemBuilder: (BuildContext context) {
+              return ll.map((link) {
+                return PopupMenuItem(height: 35,
+                  value: link,
+                  child: Text(link),
+                );
+              }).toList();
+            },
+          ),
+        ],
+        title: Text('All Orders'),
+        centerTitle: true,
+      ),
+      body: Column(
+        children: [
+          Container(
+            height: 50,
+            child: TabBar(
+              controller: tabController,
+              indicatorWeight: 0,
+              indicator: new BubbleTabIndicator(
+                indicatorHeight: 25.0,
+                indicatorColor: Colors.blueAccent,
+                tabBarIndicatorSize: TabBarIndicatorSize.tab,
+              ),
+              isScrollable: true,
+              unselectedLabelColor: Colors.indigo,
+              tabs: [
+                Tab(
+                  child: Text(
+                    'All time',
+                  ),
                 ),
-
-                isScrollable: true,
-
-                unselectedLabelColor: Colors.indigo,
-                tabs: [
-                  Tab(
-                    child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color: Colors.grey),
-                      child: Text(
-                        'All time',
-                      ),
-                    ),
+                Tab(
+                  child: Text(
+                    'Today',
                   ),
-                  Tab(
-                    child: Text(
-                      'Today',
-                    ),
+                ),
+                Tab(
+                  child: Text(
+                    'Yesterday',
                   ),
-                  Tab(
-                    child: Text(
-                      'Yesterday',
-                    ),
+                ),
+                Tab(
+                  child: Text(
+                    'This Week',
                   ),
-                  Tab(
-                    child: Text(
-                      'This Week',
-                    ),
+                ),
+                Tab(
+                  child: Text(
+                    'This Month',
                   ),
-                  Tab(
-                    child: Text(
-                      'This Month',
-                    ),
+                ),
+                Tab(
+                  child: Text(
+                    'Last Month',
                   ),
-                  Tab(
-                    child: Text(
-                      'Last Month',
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
-            Expanded(
-              child: TabBarView(controller: tabController,
-                children: [
-                  AllTime(),
-                  Today(),
-                  YesterDay(),
-                  ThisWeek(),
-                  ThisMonth(),
-                  LastMonth(),
-                ],
-              ),
+          ),
+          Expanded(
+            child: TabBarView(
+              controller: tabController,
+              children: [
+                AllTime(),
+                Today(),
+                YesterDay(),
+                ThisWeek(),
+                ThisMonth(),
+                LastMonth(),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

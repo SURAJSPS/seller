@@ -1,17 +1,24 @@
+import 'dart:ui';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class ProductCard extends StatefulWidget {
+class CategoryCard extends StatefulWidget {
   @override
-  _ProductCardState createState() => _ProductCardState();
+  _CategoryCardState createState() => _CategoryCardState();
 }
 
-class _ProductCardState extends State<ProductCard> {
+class _CategoryCardState extends State<CategoryCard> {
+  List<String> ll = ["Edit", "Delete category",];
+  @override
   bool switchOn = false;
+
   void changeSwitchState(bool state) {
-    setState(() {
-      switchOn = !switchOn;
-    });
+    setState(
+      () {
+        switchOn = !switchOn;
+      },
+    );
   }
 
   @override
@@ -33,7 +40,7 @@ class _ProductCardState extends State<ProductCard> {
                         height: 100,
                         child: Card(
                           child: Image.network(
-                            'https://images-na.ssl-images-amazon.com/images/I/812kVuBZfyL._SL1500_.jpg',
+                            'https://placeimg.com/640/480/any',
                             height: 100,
                             width: 80,
                           ),
@@ -51,32 +58,33 @@ class _ProductCardState extends State<ProductCard> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              'Aara Computer 4 Gb',
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Text('1 piece'),
-                            SizedBox(
-                              height: 10,
-                            ),
                             Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  '₹100 ',
+                                  'Computer',
                                   style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
-                                SizedBox(
-                                  width: 5,
-                                ),
-                                Text(
-                                  '₹200',
-                                  style: TextStyle(
-                                      decoration: TextDecoration.lineThrough),
+                                PopupMenuButton(
+                                  onSelected: (value) {},
+
+                                  itemBuilder: (BuildContext context) {
+                                    return ll.map((link) {
+                                      return PopupMenuItem(height: 35,
+                                        value: link,
+                                        child: Text(link),
+                                      );
+                                    }).toList();
+                                  },
                                 ),
                               ],
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Text('1 Product listed'),
+                            SizedBox(
+                              height: 10,
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -109,21 +117,24 @@ class _ProductCardState extends State<ProductCard> {
                   SizedBox(
                     height: 5,
                   ),
-                  GestureDetector(child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.share_sharp,
-                        size: 15,
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text('Share Category'),
-                    ],
-                  ),onTap: (){
-                    _showMyDialog(context);
-                  },),
+                  GestureDetector(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.share_sharp,
+                          size: 15,
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text('Share Category'),
+                      ],
+                    ),
+                    onTap: () {
+                      _showMyDialog(context);
+                    },
+                  ),
                   SizedBox(
                     height: 5,
                   ),
@@ -182,7 +193,9 @@ Future<void> _showMyDialog(context) async {
                   Navigator.of(context).pop();
                 },
               ),
-              SizedBox(width: 2,),
+              SizedBox(
+                width: 2,
+              ),
               Container(
                 width: 1,
                 height: 35,

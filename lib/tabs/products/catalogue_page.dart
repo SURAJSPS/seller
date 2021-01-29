@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'tab/categories.dart';
+import 'widget/categories_card.dart';
 import 'tab/products.dart';
 
 class BottomProductsPage extends StatelessWidget {

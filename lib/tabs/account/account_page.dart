@@ -24,438 +24,435 @@ class _BottomAccountPageState extends State<BottomAccountPage> {
   int progressValue = 1;
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text(
-            'Account',
-            style: TextStyle(color: Colors.white),
-          ),
-          centerTitle: true,
-          actions: [
-            GestureDetector(
-              child: Card(
-                color: Colors.white,
-                margin: EdgeInsets.all(14),
-                child: Container(
-                  child: Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(2.0),
-                        child: Icon(
-                          Icons.account_circle_outlined,
-                          color: Colors.blueAccent,
-                          size: 20,
-                        ),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'Account',
+          style: TextStyle(color: Colors.white),
+        ),
+        centerTitle: true,
+        actions: [
+          GestureDetector(
+            child: Card(
+              color: Colors.white,
+              margin: EdgeInsets.all(14),
+              child: Container(
+                child: Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(2.0),
+                      child: Icon(
+                        Icons.account_circle_outlined,
+                        color: Colors.blueAccent,
+                        size: 20,
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(4.0),
-                        child: Text(
-                          'Support',
-                          style: TextStyle(
-                              fontSize: 12,
-                              color: Colors.blueAccent,
-                              fontWeight: FontWeight.bold),
-                        ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: Text(
+                        'Support',
+                        style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.blueAccent,
+                            fontWeight: FontWeight.bold),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
-              onTap: () {
-                _showMyDialog();
-              },
-            )
-          ],
-        ),
-        body: ListView(
-          children: [
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    decoration: BoxDecoration(
-                        color: Colors.white70.withOpacity(.5),
-                        borderRadius: BorderRadius.circular(7.1),
-                        border: Border.all(
-                          width: .5,
-                        )),
-                    child: Image(
-                      height: 70,
-                      width: 75,
-                      fit: BoxFit.contain,
-                      image: NetworkImage(
-                          'https://mydukaan.io/images/store-person-1.jpg'),
-                    ),
+            ),
+            onTap: () {
+              _showMyDialog();
+            },
+          )
+        ],
+      ),
+      body: ListView(
+        children: [
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                      color: Colors.white70.withOpacity(.5),
+                      borderRadius: BorderRadius.circular(7.1),
+                      border: Border.all(
+                        width: .5,
+                      )),
+                  child: Image(
+                    height: 70,
                     width: 75,
-                    height: 75,
+                    fit: BoxFit.contain,
+                    image: NetworkImage(
+                        'https://mydukaan.io/images/store-person-1.jpg'),
                   ),
-                  Container(
-                    child: Padding(
-                      padding: const EdgeInsets.all(18.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Dukan',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 22),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(4.0),
-                            child: GestureDetector(
-                              child: Text(
-                                'Edit business details',
-                                style: TextStyle(color: Colors.blueAccent),
-                                textWidthBasis: TextWidthBasis.longestLine,
-                              ),
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          EditBusinessDetails()),
-                                );
-                              },
+                  width: 75,
+                  height: 75,
+                ),
+                Container(
+                  child: Padding(
+                    padding: const EdgeInsets.all(18.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Dukan',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 22),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(4.0),
+                          child: GestureDetector(
+                            child: Text(
+                              'Edit business details',
+                              style: TextStyle(color: Colors.blueAccent),
+                              textWidthBasis: TextWidthBasis.longestLine,
                             ),
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        EditBusinessDetails()),
+                              );
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+          Divider(
+            height: 0,
+            thickness: 1,
+            indent: 16,
+            endIndent: 17,
+            color: Colors.grey,
+          ),
+          Container(
+            height: 45,
+            alignment: Alignment.topLeft,
+            child: ListTile(
+              dense: true,
+              contentPadding: EdgeInsets.symmetric(horizontal: 15),
+              title: Text('Share Dukaan App', style: TextStyle(fontSize: 14)),
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ShareDukaanApp(),
+                    ));
+              },
+              trailing: Icon(Icons.arrow_forward_ios_sharp),
+              leading: Icon(Icons.share_sharp),
+            ),
+          ),
+          Container(
+            height: 45,
+            alignment: Alignment.topLeft,
+            child: ListTile(
+              dense: true,
+              leading: Icon(Icons.notifications),
+              trailing: Switch(
+                onChanged: (value) {
+                  setState(() {
+                    isActive = value;
+                  });
+                  if (value == true) {
+                    final snackBar = SnackBar(
+                      content: Row(
+                        children: [
+                          Icon(
+                            Icons.check_circle_outline_rounded,
+                            color: Colors.blue,
+                          ),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          Text(
+                            'Full Screen Notification is ON now!',
                           ),
                         ],
                       ),
-                    ),
-                  )
-                ],
-              ),
-            ),
-            Divider(
-              height: 0,
-              thickness: 1,
-              indent: 16,
-              endIndent: 17,
-              color: Colors.grey,
-            ),
-            Container(
-              height: 45,
-              alignment: Alignment.topLeft,
-              child: ListTile(
-                dense: true,
-                contentPadding: EdgeInsets.symmetric(horizontal: 15),
-                title: Text('Share Dukaan App', style: TextStyle(fontSize: 14)),
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => ShareDukaanApp(),
-                      ));
-                },
-                trailing: Icon(Icons.arrow_forward_ios_sharp),
-                leading: Icon(Icons.share_sharp),
-              ),
-            ),
-            Container(
-              height: 45,
-              alignment: Alignment.topLeft,
-              child: ListTile(
-                dense: true,
-                leading: Icon(Icons.notifications),
-                trailing: Switch(
-                  onChanged: (value) {
-                    setState(() {
-                      isActive = value;
-                    });
-                    if (value == true) {
-                      final snackBar = SnackBar(
-                        content: Row(
-                          children: [
-                            Icon(
-                              Icons.check_circle_outline_rounded,
-                              color: Colors.blue,
-                            ),
-                            SizedBox(
-                              width: 5,
-                            ),
-                            Text(
-                              'Full Screen Notification is ON now!',
-                            ),
-                          ],
-                        ),
-                        duration: Duration(seconds: 2),
-                        behavior: SnackBarBehavior.floating,
-                        action: SnackBarAction(
-                          label: 'Undo',
-                          onPressed: () {
-                            // Some code to undo the change.
-                          },
-                        ),
-                      );
-                      Scaffold.of(context).showSnackBar(snackBar);
-                    } else {
-                      final snackBar = SnackBar(
-                        content: Row(
-                          children: [
-                            Icon(
-                              Icons.check_circle_outline_rounded,
-                              color: Colors.blue,
-                            ),
-                            SizedBox(
-                              width: 5,
-                            ),
-                            Text('Full Screen Notification is OFF now!'),
-                          ],
-                        ),
-                        duration: Duration(seconds: 2),
-                        behavior: SnackBarBehavior.floating,
-                        action: SnackBarAction(
-                          label: 'Undo',
-                          onPressed: () {
-                            // Some code to undo the change.
-                          },
-                        ),
-                      );
-                      Scaffold.of(context).showSnackBar(snackBar);
-                    }
-                  },
-                  value: isActive,
-                ),
-                title: Text(
-                  'Full Screen Notification',
-                  style: TextStyle(fontSize: 14),
-                ),
-              ),
-            ),
-            Container(
-              height: 45,
-              alignment: Alignment.topLeft,
-              child: ListTile(
-                dense: true,
-                contentPadding: EdgeInsets.symmetric(horizontal: 15),
-                title: Text(
-                  'Remove Dukaan Branding',
-                  style: TextStyle(fontSize: 14),
-                ),
-                onTap: () {
-                  _showMyDialogRemove_Dukaan_Branding();
-                },
-                leading: Icon(Icons.shopping_bag_outlined),
-              ),
-            ),
-            Container(
-              height: 45,
-              alignment: Alignment.topLeft,
-              child: ListTile(
-                contentPadding: EdgeInsets.symmetric(horizontal: 15),
-                dense: true,
-                title: Text(
-                  'How to use Dukan App',
-                  style: TextStyle(fontSize: 14),
-                ),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => HowToUseDukaanApp(),
-                    ),
-                  );
-                },
-                leading: Icon(Icons.video_collection_outlined),
-              ),
-            ),
-            Container(
-              height: 45,
-              alignment: Alignment.topLeft,
-              child: ListTile(
-                dense: true,
-                contentPadding: EdgeInsets.symmetric(horizontal: 15),
-                title: Text(
-                  'Privacy Policy',
-                  style: TextStyle(fontSize: 14),
-                ),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => PrivacyPolicy(),
-                    ),
-                  );
-                },
-                leading: Icon(Icons.lock_outline_rounded),
-              ),
-            ),
-            Container(
-              height: 45,
-              alignment: Alignment.topLeft,
-              child: ListTile(
-                dense: true,
-                contentPadding: EdgeInsets.symmetric(horizontal: 15),
-                title: Text(
-                  'Rate Us',
-                  style: TextStyle(fontSize: 14),
-                ),
-                onTap: () {
-                  _showMyDialogRatUs();
-                },
-                leading: Icon(Icons.star_outline),
-              ),
-            ),
-            Container(
-              height: 45,
-              alignment: Alignment.topLeft,
-              child: ListTile(
-                dense: true,
-                contentPadding: EdgeInsets.symmetric(horizontal: 15),
-                title: Text(
-                  'Sign Out',
-                  style: TextStyle(fontSize: 14),
-                ),
-                onTap: () {
-                  showModalBottomSheet<void>(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular((10))),
-                        height: 150,
-                        child: Center(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            mainAxisSize: MainAxisSize.min,
-                            children: <Widget>[
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  SizedBox(
-                                    width: 160,
-                                  ),
-                                  Text(
-                                    'Sign Out',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 18),
-                                  ),
-                                  SizedBox(
-                                    width: 100,
-                                  ),
-                                  IconButton(
-                                    icon: Icon(Icons.clear),
-                                    onPressed: () {
-                                      Navigator.of(context).pop();
-                                    },
-                                  ),
-                                  SizedBox(
-                                    height: 40,
-                                  )
-                                ],
-                              ),
-                              Text('Are you want to sign out?'),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: CupertinoButton(
-                                  color: Colors.red,
-                                  child: Text('Sign Out'),
-                                  onPressed: () => Navigator.pop(context),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                      );
-                    },
-                  );
-                },
-                leading: Icon(Icons.logout),
-              ),
-            ),
-            Expanded(
-              child: new Container(
-                height: 30,
-              ),
-            ),
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-              decoration: BoxDecoration(
-                color: Colors.grey.withOpacity(.1),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Row(
-                    children: [
-                      Text('OUR PROMISE'),
-                    ],
-                  ),
-                  Padding(
-                    padding:
-                        const EdgeInsets.symmetric(vertical: 10, horizontal: 0),
-                    child: Container(
-                      child: Column(
+                      duration: Duration(seconds: 2),
+                      behavior: SnackBarBehavior.floating,
+                      action: SnackBarAction(
+                        label: 'Undo',
+                        onPressed: () {
+                          // Some code to undo the change.
+                        },
+                      ),
+                    );
+                    Scaffold.of(context).showSnackBar(snackBar);
+                  } else {
+                    final snackBar = SnackBar(
+                      content: Row(
                         children: [
-                          Row(
-                            children: [
-                              Row(
+                          Icon(
+                            Icons.check_circle_outline_rounded,
+                            color: Colors.blue,
+                          ),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          Text('Full Screen Notification is OFF now!'),
+                        ],
+                      ),
+                      duration: Duration(seconds: 2),
+                      behavior: SnackBarBehavior.floating,
+                      action: SnackBarAction(
+                        label: 'Undo',
+                        onPressed: () {
+                          // Some code to undo the change.
+                        },
+                      ),
+                    );
+                    Scaffold.of(context).showSnackBar(snackBar);
+                  }
+                },
+                value: isActive,
+              ),
+              title: Text(
+                'Full Screen Notification',
+                style: TextStyle(fontSize: 14),
+              ),
+            ),
+          ),
+          Container(
+            height: 45,
+            alignment: Alignment.topLeft,
+            child: ListTile(
+              dense: true,
+              contentPadding: EdgeInsets.symmetric(horizontal: 15),
+              title: Text(
+                'Remove Dukaan Branding',
+                style: TextStyle(fontSize: 14),
+              ),
+              onTap: () {
+                _showMyDialogRemove_Dukaan_Branding();
+              },
+              leading: Icon(Icons.shopping_bag_outlined),
+            ),
+          ),
+          Container(
+            height: 45,
+            alignment: Alignment.topLeft,
+            child: ListTile(
+              contentPadding: EdgeInsets.symmetric(horizontal: 15),
+              dense: true,
+              title: Text(
+                'How to use Dukan App',
+                style: TextStyle(fontSize: 14),
+              ),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => HowToUseDukaanApp(),
+                  ),
+                );
+              },
+              leading: Icon(Icons.video_collection_outlined),
+            ),
+          ),
+          Container(
+            height: 45,
+            alignment: Alignment.topLeft,
+            child: ListTile(
+              dense: true,
+              contentPadding: EdgeInsets.symmetric(horizontal: 15),
+              title: Text(
+                'Privacy Policy',
+                style: TextStyle(fontSize: 14),
+              ),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => PrivacyPolicy(),
+                  ),
+                );
+              },
+              leading: Icon(Icons.lock_outline_rounded),
+            ),
+          ),
+          Container(
+            height: 45,
+            alignment: Alignment.topLeft,
+            child: ListTile(
+              dense: true,
+              contentPadding: EdgeInsets.symmetric(horizontal: 15),
+              title: Text(
+                'Rate Us',
+                style: TextStyle(fontSize: 14),
+              ),
+              onTap: () {
+                _showMyDialogRatUs();
+              },
+              leading: Icon(Icons.star_outline),
+            ),
+          ),
+          Container(
+            height: 45,
+            alignment: Alignment.topLeft,
+            child: ListTile(
+              dense: true,
+              contentPadding: EdgeInsets.symmetric(horizontal: 15),
+              title: Text(
+                'Sign Out',
+                style: TextStyle(fontSize: 14),
+              ),
+              onTap: () {
+                showModalBottomSheet<void>(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular((10))),
+                      height: 150,
+                      child: Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisSize: MainAxisSize.min,
+                          children: <Widget>[
+                            Row(
+                              mainAxisAlignment:
+                              MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                SizedBox(
+                                  width: 160,
+                                ),
+                                Text(
+                                  'Sign Out',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 18),
+                                ),
+                                SizedBox(
+                                  width: 100,
+                                ),
+                                IconButton(
+                                  icon: Icon(Icons.clear),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                ),
+                                SizedBox(
+                                  height: 40,
+                                )
+                              ],
+                            ),
+                            Text('Are you want to sign out?'),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: CupertinoButton(
+                                color: Colors.red,
+                                child: Text('Sign Out'),
+                                onPressed: () => Navigator.pop(context),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                );
+              },
+              leading: Icon(Icons.logout),
+            ),
+          ),
+          Expanded(
+            child: new Container(
+              height: 30,
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+            decoration: BoxDecoration(
+              color: Colors.grey.withOpacity(.1),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Row(
+                  children: [
+                    Text('OUR PROMISE'),
+                  ],
+                ),
+                Padding(
+                  padding:
+                  const EdgeInsets.symmetric(vertical: 10, horizontal: 0),
+                  child: Container(
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            Row(
+                              children: [
+                                Container(
+                                  padding:
+                                  EdgeInsets.symmetric(horizontal: 3),
+                                  child: SizedBox(
+                                    child: Container(
+                                      color: Colors.blue.withOpacity(.2),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(4.0),
+                                        child: Icon(
+                                          Icons.assignment_turned_in_outlined,
+                                          size: 20,
+                                          color: Colors.blueAccent,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
+                                    '100% Safe & Free',
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Container(
+                              padding: EdgeInsets.symmetric(horizontal: 25),
+                              child: Row(
                                 children: [
                                   Container(
-                                    padding:
-                                        EdgeInsets.symmetric(horizontal: 3),
-                                    child: SizedBox(
-                                      child: Container(
-                                        color: Colors.blue.withOpacity(.2),
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(4.0),
-                                          child: Icon(
-                                            Icons.assignment_turned_in_outlined,
-                                            size: 20,
-                                            color: Colors.blueAccent,
-                                          ),
-                                        ),
+                                    color: Colors.deepOrangeAccent
+                                        .withOpacity(.2),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(4.0),
+                                      child: Icon(
+                                        Icons.backup_sharp,
+                                        size: 20,
+                                        color: Colors.deepOrangeAccent,
                                       ),
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Text(
-                                      '100% Safe & Free',
-                                    ),
+                                    padding: const EdgeInsets.all(6),
+                                    child: Text('Auto Data Backup'),
                                   ),
                                 ],
                               ),
-                              Container(
-                                padding: EdgeInsets.symmetric(horizontal: 25),
-                                child: Row(
-                                  children: [
-                                    Container(
-                                      color: Colors.deepOrangeAccent
-                                          .withOpacity(.2),
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(4.0),
-                                        child: Icon(
-                                          Icons.backup_sharp,
-                                          size: 20,
-                                          color: Colors.deepOrangeAccent,
-                                        ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(6),
-                                      child: Text('Auto Data Backup'),
-                                    ),
-                                  ],
-                                ),
-                              )
-                            ],
-                          )
-                        ],
-                      ),
+                            )
+                          ],
+                        )
+                      ],
                     ),
-                  )
-                ],
-              ),
-            )
-          ],
-        ),
+                  ),
+                )
+              ],
+            ),
+          )
+        ],
       ),
     );
   }
