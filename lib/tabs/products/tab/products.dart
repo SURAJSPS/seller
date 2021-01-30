@@ -4,15 +4,14 @@ import 'package:new1/tabs/basket/tab_bar/shimmer.dart';
 import 'package:new1/tabs/products/widget/products_card.dart';
 
 import 'add_new_products.dart';
+import 'widget/addproduct1.dart';
 
 class Product extends StatefulWidget {
-
   @override
   _ProductState createState() => _ProductState();
 }
 
 class _ProductState extends State<Product> {
-
   bool active = true;
 
   _getResults() async {
@@ -20,7 +19,7 @@ class _ProductState extends State<Product> {
       Duration(seconds: 3),
     );
     setState(
-          () {
+      () {
         active = false;
       },
     );
@@ -38,34 +37,41 @@ class _ProductState extends State<Product> {
     return Container(
         child: active
             ? ListView(
-          padding: EdgeInsets.all(0),
-          children: [
-            ShimmerOnly(),
-            ShimmerOnly(),
-            ShimmerOnly(),
-            ShimmerOnly(),
-            ShimmerOnly(),
-            ShimmerOnly(),
-          ],
-        )
-            : Stack(alignment: Alignment.bottomCenter,
-          children: [
-          Container(
-            child: ProductCard(),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: CupertinoButton(
-              child: Text(
-                'Add new product',
-                style: TextStyle(color: Colors.white),
-              ),
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>AddProducts()));
-              },color: Colors.deepOrange,
-            ),
-          ),
-        ],)
-    );
+                padding: EdgeInsets.all(0),
+                children: [
+                  ShimmerOnly(),
+                  ShimmerOnly(),
+                  ShimmerOnly(),
+                  ShimmerOnly(),
+                  ShimmerOnly(),
+                  ShimmerOnly(),
+                ],
+              )
+            : Stack(
+                alignment: Alignment.bottomCenter,
+                children: [
+                  Container(
+                    child: ProductCard(),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: CupertinoButton(
+                      child: Text(
+                        'Add new product',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => AddProduct1(),
+                          ),
+                        );
+                      },
+                      color: Colors.deepOrange,
+                    ),
+                  ),
+                ],
+              ));
   }
 }

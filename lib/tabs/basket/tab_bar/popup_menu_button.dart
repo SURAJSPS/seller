@@ -25,10 +25,17 @@ class _PoUpUpMenuButtonState extends State<PoUpUpMenuButton> {
           return BasketUtil.list.map((link) {
             return PopupMenuItem(
               textStyle:
-                  TextStyle(color: Color(int.parse("0xFF${link.color}"))),
+                  TextStyle(color: Colors.black87),
               height: 35,
               value: link,
-              child: Text(link.title),
+              child: Row(
+                children: [
+                  Icon(Icons.circle,size: 18,color: Color(int.parse("0xFF${link.color}")),),
+                  SizedBox(width: 5,),
+                  Text(link.title),
+                  Text(link.id),
+                ],
+              ),
             );
           }).toList();
         },

@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'add_variants.dart';
+
 class AddProducts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -210,12 +212,14 @@ class AddProducts extends StatelessWidget {
                           color: Colors.blue,
                         ),
                         Text(
-                          'ADD PRODUCT',
+                          'Abb Variants',
                           style: TextStyle(color: Colors.blue),
                         )
                       ],
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>AddVariants(),),);
+                    },
                   ),
                 )
               ],
