@@ -22,6 +22,7 @@ class AddVariants extends StatelessWidget {
                   style: TextStyle(
                       color: Colors.black87, fontWeight: FontWeight.bold),
                 ),
+                childrenPadding: EdgeInsets.all(15),
                 children: [
                   TextField(
                     decoration: InputDecoration(
@@ -40,6 +41,9 @@ class AddVariants extends StatelessWidget {
                               labelText: 'Size 1',
                             ),
                           ),
+                        ),
+                        new SizedBox(
+                          width: 15,
                         ),
                         Expanded(
                           child: TextField(
