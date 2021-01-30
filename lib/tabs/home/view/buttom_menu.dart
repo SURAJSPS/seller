@@ -12,7 +12,8 @@ class _BottomRadioMenuState extends State<BottomRadioMenu> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(height: 45,
+        SizedBox(
+          height: 45,
           child: ListTile(
             contentPadding: EdgeInsets.all(0),
             horizontalTitleGap: 0,
@@ -31,7 +32,8 @@ class _BottomRadioMenuState extends State<BottomRadioMenu> {
             ),
           ),
         ),
-        SizedBox(height: 45,
+        SizedBox(
+          height: 45,
           child: ListTile(
             contentPadding: EdgeInsets.all(0),
             horizontalTitleGap: 0,
@@ -50,58 +52,69 @@ class _BottomRadioMenuState extends State<BottomRadioMenu> {
             ),
           ),
         ),
-        SizedBox(height: 45,child: ListTile(
-          contentPadding: EdgeInsets.all(0),
-          horizontalTitleGap: 0,
-          title: Text(
-            '4 hour',
-            style: TextStyle(fontSize: 14),
+        SizedBox(
+          height: 45,
+          child: ListTile(
+            contentPadding: EdgeInsets.all(0),
+            horizontalTitleGap: 0,
+            title: Text(
+              '4 hour',
+              style: TextStyle(fontSize: 14),
+            ),
+            leading: Radio(
+              value: '4 hour',
+              onChanged: (value) {
+                setState(() {
+                  HomeUtil.timeSlot = value;
+                });
+              },
+              groupValue: HomeUtil.timeSlot,
+            ),
           ),
-          leading: Radio(
-            value: '4 hour',
-            onChanged: (value) {
-              setState(() {
-                HomeUtil.timeSlot = value;
-              });
-            },
-            groupValue: HomeUtil.timeSlot,
+        ),
+        SizedBox(
+          height: 45,
+          child: ListTile(
+            contentPadding: EdgeInsets.all(0),
+            horizontalTitleGap: 0,
+            title: Text(
+              'Tomorrow,at same time',
+              style: TextStyle(fontSize: 14),
+            ),
+            leading: Radio(
+              value: 'Tomorrow,at same time',
+              onChanged: (value) {
+                setState(() {
+                  HomeUtil.timeSlot = value;
+                });
+              },
+              groupValue: HomeUtil.timeSlot,
+            ),
           ),
-        ),),
-        SizedBox(height: 45,child: ListTile(
-          contentPadding: EdgeInsets.all(0),
-          horizontalTitleGap: 0,
-          title: Text(
-            'Tomorrow,at same time',
-            style: TextStyle(fontSize: 14),
+        ),
+        SizedBox(
+          height: 45,
+          child: ListTile(
+            contentPadding: EdgeInsets.all(0),
+            horizontalTitleGap: 0,
+            title: Text(
+              'I will go online myself',
+              style: TextStyle(fontSize: 14),
+            ),
+            leading: Radio(
+              value: 'I will go online myself',
+              onChanged: (value) {
+                setState(() {
+                  HomeUtil.timeSlot = value;
+                });
+              },
+              groupValue: HomeUtil.timeSlot,
+            ),
           ),
-          leading: Radio(
-            value: 'Tomorrow,at same time',
-            onChanged: (value) {
-              setState(() {
-                HomeUtil.timeSlot = value;
-              });
-            },
-            groupValue: HomeUtil.timeSlot,
-          ),
-        ),),
-        SizedBox(height: 45,child: ListTile(
-          contentPadding: EdgeInsets.all(0),
-          horizontalTitleGap: 0,
-          title: Text(
-            'I will go online myself',
-            style: TextStyle(fontSize: 14),
-          ),
-          leading: Radio(
-            value: 'I will go online myself',
-            onChanged: (value) {
-              setState(() {
-                HomeUtil.timeSlot = value;
-              });
-            },
-            groupValue: HomeUtil.timeSlot,
-          ),
-        ),),
-        SizedBox(height: 40,),
+        ),
+        SizedBox(
+          height: 40,
+        ),
         Text(
           'Your store re-open at 01:49 PM ',
           style: TextStyle(fontSize: 12),
@@ -109,7 +122,8 @@ class _BottomRadioMenuState extends State<BottomRadioMenu> {
         SizedBox(
           height: 20,
         ),
-        CupertinoButton(padding: EdgeInsets.symmetric(horizontal: 40),
+        CupertinoButton(
+          padding: EdgeInsets.symmetric(horizontal: 40),
           child: Text('Confirm'),
           color: Colors.blue[900],
           onPressed: () {

@@ -5,6 +5,7 @@ import 'package:new1/bottom_pages/widget/drop.dart';
 
 import 'tab_bar/all_time.dart';
 import 'tab_bar/last_month.dart';
+import 'tab_bar/popup_menu_button.dart';
 import 'tab_bar/this_month.dart';
 import 'tab_bar/this_week.dart';
 import 'tab_bar/today.dart';
@@ -19,7 +20,6 @@ class _BottomOrderPageState extends State<BottomOrderPage>
     with TickerProviderStateMixin {
   int _hasBeenPressed1 = 0;
   TabController tabController;
-  List<String> ll = ["All", "Pending","Accepted","Rejected","Shipped","Cancelled","Delivered","Failed"];
   @override
   void initState() {
     // TODO: implement initState
@@ -33,18 +33,7 @@ class _BottomOrderPageState extends State<BottomOrderPage>
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
         actions: [
-          PopupMenuButton(
-            onSelected: (value) {},
-            padding: EdgeInsets.all(10),
-            itemBuilder: (BuildContext context) {
-              return ll.map((link) {
-                return PopupMenuItem(height: 35,
-                  value: link,
-                  child: Text(link),
-                );
-              }).toList();
-            },
-          ),
+          PoUpUpMenuButton(),
         ],
         title: Text('All Orders'),
         centerTitle: true,
