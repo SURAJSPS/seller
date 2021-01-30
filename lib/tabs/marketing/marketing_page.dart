@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'file:///C:/Users/Suraj/.android/new1/lib/tabs/marketing/store_qr_code.dart';
+import 'package:new1/tabs/marketing/store_qr_code.dart';
 import 'package:shimmer/shimmer.dart';
 import 'delivery_charge.dart';
 import 'discount_coupon.dart';
@@ -43,10 +43,16 @@ class _BottomMarketingPageState extends State<BottomMarketingPage> {
                   width: 5,
                 ),
                 Container(
-                  padding: EdgeInsets.symmetric(horizontal: 7,vertical: 2),
-                  decoration: BoxDecoration(color: Colors.lightGreen,borderRadius: BorderRadius.circular(2),),
+                  padding: EdgeInsets.symmetric(horizontal: 7, vertical: 2),
+                  decoration: BoxDecoration(
+                    color: Colors.lightGreen,
+                    borderRadius: BorderRadius.circular(2),
+                  ),
                   child: Shimmer.fromColors(
-                      child: Text('New',style: TextStyle(fontSize: 12),),
+                      child: Text(
+                        'New',
+                        style: TextStyle(fontSize: 12),
+                      ),
                       baseColor: Colors.white,
                       highlightColor: Colors.grey[400]),
                 ),

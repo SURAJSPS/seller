@@ -23,7 +23,6 @@ class AddVariants extends StatelessWidget {
                       color: Colors.black87, fontWeight: FontWeight.bold),
                 ),
                 children: [
-
                   TextField(
                     decoration: InputDecoration(
                       labelText: 'Size 1',
@@ -35,18 +34,23 @@ class AddVariants extends StatelessWidget {
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Expanded(child: TextField(
-                          decoration: InputDecoration(
-                            labelText: 'Size 1',
+                        Expanded(
+                          child: TextField(
+                            decoration: InputDecoration(
+                              labelText: 'Size 1',
+                            ),
                           ),
-                        ),)
-
+                        ),
+                        Expanded(
+                          child: TextField(
+                            decoration: InputDecoration(
+                              labelText: 'Size 1',
+                            ),
+                          ),
+                        )
                       ],
                     ),
                   ),
-
-
-
                 ],
                 initiallyExpanded: true,
               ),
